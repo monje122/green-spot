@@ -1,0 +1,19 @@
+{
+  "name": "green-spot-3d-landing",
+  "version": "1.0.0",
+  "description": "Interactive 3D scroll-driven video landing page for Green Spot refresco",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js"
+  },
+  "keywords": [
+    "greenspot",
+    "3d",
+    "scrollytelling",
+    "video-scrub",
+    "threejs",
+    "landing-page"
+  ],
+  "author": "Antigravity",
+  "license": "MIT"
+}

@@ -1,0 +1,660 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Green Spot — Refresco Cítrico Legendario | Edición Editorial 3D</title>
+  <meta name="description" content="Descubre la experiencia editorial interactiva de Green Spot. La botella emerge de la explosión cítrica con tu scroll, inspirada en la arquitectura y el arte del sabor.">
+
+  <!-- Open Graph -->
+  <meta property="og:title" content="Green Spot — Refresco Cítrico Legendario | Edición Editorial 3D">
+  <meta property="og:description" content="Explosión de naranja real sincronizada con tu scroll, anatomía interactiva y simulador sensorial.">
+  <meta property="og:type" content="website">
+
+  <!-- Favicon -->
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><circle cx='50' cy='50' r='45' fill='%23ea580c'/><circle cx='50' cy='50' r='20' fill='%23059669'/></svg>">
+
+  <!-- Stylesheet -->
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+  <!-- ===================================================================
+       HEADER / MINIMALIST EDITORIAL NAVBAR
+       =================================================================== -->
+  <header>
+    <nav class="navbar" id="main-nav">
+      <a href="#" class="brand-container">
+        <div class="brand-dot" title="Sello Green Spot 1934"></div>
+        <div class="brand-title">GREEN<span>SPOT</span></div>
+      </a>
+
+      <ul class="nav-links">
+        <li><a href="#origen" class="active">El Origen</a></li>
+        <li><a href="#anatomia">Anatomía</a></li>
+        <li><a href="#simulador">Simulador Cítrico</a></li>
+        <li><a href="#nichos">Colección</a></li>
+        <li><a href="#historia">Historia</a></li>
+      </ul>
+
+      <div style="display: flex; align-items: center; gap: 12px;">
+        <a href="#nichos" class="nav-cta-btn">
+          <span>Pedir Colección</span>
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+            <line x1="5" y1="12" x2="19" y2="12"></line>
+            <polyline points="12 5 19 12 12 19"></polyline>
+          </svg>
+        </a>
+        <button class="mobile-toggle" id="mobile-toggle-btn" aria-label="Abrir menú">☰</button>
+      </div>
+    </nav>
+
+    <!-- Mobile Navigation Drawer Overlay (iPhone & Android) -->
+    <div class="mobile-drawer-overlay" id="mobile-drawer">
+      <div class="mobile-drawer-header">
+        <a href="#" class="brand-container">
+          <div class="brand-dot"></div>
+          <div class="brand-title">GREEN<span>SPOT</span></div>
+        </a>
+        <button class="mobile-drawer-close" id="drawer-close" aria-label="Cerrar menú">✕</button>
+      </div>
+      <ul class="mobile-drawer-links">
+        <li><a href="#origen" class="mobile-nav-link"><span class="m-num">01</span> El Origen</a></li>
+        <li><a href="#anatomia" class="mobile-nav-link"><span class="m-num">02</span> Anatomía</a></li>
+        <li><a href="#simulador" class="mobile-nav-link"><span class="m-num">03</span> Simulador Cítrico</a></li>
+        <li><a href="#nichos" class="mobile-nav-link"><span class="m-num">04</span> Colección de Museo</a></li>
+        <li><a href="#historia" class="mobile-nav-link"><span class="m-num">05</span> Historia & Legado</a></li>
+      </ul>
+      <div class="mobile-drawer-footer">
+        <a href="#nichos" class="mobile-drawer-cta">
+          <span>Pedir Colección Completa</span>
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+            <line x1="5" y1="12" x2="19" y2="12"></line>
+            <polyline points="12 5 19 12 12 19"></polyline>
+          </svg>
+        </a>
+        <span class="mobile-drawer-slogan">✦ PURO CARÁCTER CÍTRICO DESDE 1934 ✦</span>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <!-- ===================================================================
+         SECTION 01: HERO FULLSCREEN SCROLL-DRIVEN STAGE (Flor de Arauca Inspired)
+         =================================================================== -->
+    <section class="hero-scrolly-container" id="origen">
+      <!-- Top Scroll Line Indicator -->
+      <div class="hero-progress-track">
+        <div class="hero-progress-fill" id="hero-progress-fill"></div>
+      </div>
+
+      <div class="hero-sticky">
+        <!-- Ambient Blurred Aura Canvas (Mirrors video colors across the widescreen) -->
+        <canvas id="hero-ambient-canvas" class="hero-ambient-canvas" aria-hidden="true"></canvas>
+
+        <!-- Dynamic Ambient Light Flares -->
+        <div class="hero-flare flare-top-right"></div>
+        <div class="hero-flare flare-bottom-left"></div>
+
+        <!-- Center Fullscreen Bottle Video & Canvas Stage -->
+        <div class="hero-stage-center">
+          <canvas id="hero-scrub-canvas" class="hero-scrub-canvas"></canvas>
+          <video
+            id="greenspot-video"
+            class="hero-video-fallback"
+            src="assets/greenspot-bottle.mp4"
+            muted
+            playsinline
+            webkit-playsinline
+            preload="auto"
+            aria-hidden="true"
+          ></video>
+        </div>
+
+        <!-- ===============================================================
+             EDITORIAL FLOATING CARDS (Emerging from Left & Right on Scroll)
+             =============================================================== -->
+        <div class="hero-cards-overlay">
+
+          <!-- Card 1: Left Side (0% - 25% Scroll) -->
+          <article class="hero-float-card hero-card-left is-active" data-step="1">
+            <div class="card-top-row">
+              <span class="hero-card-tag">01 / EL ORIGEN DEL CÍTRICO</span>
+              <div class="mobile-step-dots" aria-hidden="true">
+                <span class="step-dot active"></span>
+                <span class="step-dot"></span>
+                <span class="step-dot"></span>
+                <span class="step-dot"></span>
+              </div>
+            </div>
+            <h1 class="hero-card-title">CLAREMONT, <span>1934</span></h1>
+            <p class="hero-card-desc">
+              El néctar dorado nacido en las fuentes de soda de California. Elaborado con zumo de naranja natural exprimido, sin jarabes ni colorantes químicos.
+            </p>
+            <div class="hero-card-stats">
+              <div class="hero-stat-item">
+                <strong>1934</strong>
+                <span>AÑO DE ORIGEN</span>
+              </div>
+              <div class="hero-stat-item">
+                <strong>100%</strong>
+                <span>SOL DE VALENCIA</span>
+              </div>
+            </div>
+            <div class="hero-card-footer">
+              <span class="card-hint">Desplaza hacia abajo para liberar el néctar ↓</span>
+            </div>
+          </article>
+
+          <!-- Card 2: Right Side (25% - 50% Scroll) -->
+          <article class="hero-float-card hero-card-right" data-step="2">
+            <div class="card-top-row">
+              <span class="hero-card-tag">02 / EXPLOSIÓN SENSORIAL</span>
+              <div class="mobile-step-dots" aria-hidden="true">
+                <span class="step-dot"></span>
+                <span class="step-dot active"></span>
+                <span class="step-dot"></span>
+                <span class="step-dot"></span>
+              </div>
+            </div>
+            <h2 class="hero-card-title">PURA PULPA <span>DE SOL</span></h2>
+            <p class="hero-card-desc">
+              Al descender, la botella emerge entre una ola de zumo vivo y rodajas de naranja fresca, liberando una estela de aceites esenciales y caroteno natural.
+            </p>
+            <div class="hero-card-stats">
+              <div class="hero-stat-item">
+                <strong>95%</strong>
+                <span>INTENSIDAD CÍTRICA</span>
+              </div>
+              <div class="hero-stat-item">
+                <strong>Vit C</strong>
+                <span>ENERGÍA VIVA</span>
+              </div>
+            </div>
+            <div class="hero-card-footer">
+              <span class="card-hint">Continúa bajando para enfriar la botella ↓</span>
+            </div>
+          </article>
+
+          <!-- Card 3: Left Side (50% - 75% Scroll) -->
+          <article class="hero-float-card hero-card-left" data-step="3">
+            <div class="card-top-row">
+              <span class="hero-card-tag">03 / TEMPERATURA & CRISTAL</span>
+              <div class="mobile-step-dots" aria-hidden="true">
+                <span class="step-dot"></span>
+                <span class="step-dot"></span>
+                <span class="step-dot active"></span>
+                <span class="step-dot"></span>
+              </div>
+            </div>
+            <h2 class="hero-card-title">SILUETA <span>DE CULTO</span></h2>
+            <p class="hero-card-desc">
+              El vidrio vintage esmerilado está calibrado para preservar los 3°C exactos de frescura. Cada burbuja fina acaricia el paladar con suavidad milimétrica.
+            </p>
+            <div class="hero-card-stats">
+              <div class="hero-stat-item">
+                <strong>3°C</strong>
+                <span>FRÍO ÓPTIMO</span>
+              </div>
+              <div class="hero-stat-item">
+                <strong>Vidrio</strong>
+                <span>100% CIRCULAR</span>
+              </div>
+            </div>
+            <div class="hero-card-footer">
+              <span class="card-hint">Descubre el balance final ↓</span>
+            </div>
+          </article>
+
+          <!-- Card 4: Right Side (75% - 100% Scroll) -->
+          <article class="hero-float-card hero-card-right" data-step="4">
+            <div class="card-top-row">
+              <span class="hero-card-tag">04 / SUPREMACÍA HISTÓRICA</span>
+              <div class="mobile-step-dots" aria-hidden="true">
+                <span class="step-dot"></span>
+                <span class="step-dot"></span>
+                <span class="step-dot"></span>
+                <span class="step-dot active"></span>
+              </div>
+            </div>
+            <h2 class="hero-card-title">LISTO <span>PARA CATAR</span></h2>
+            <p class="hero-card-desc">
+              Nueve décadas de devoción por el naranjal. El viaje recién comienza: continúa descendiendo para catar la anatomía y activar el simulador del maestro cítrico.
+            </p>
+            <div class="hero-card-stats">
+              <div class="hero-stat-item">
+                <strong>90 Años</strong>
+                <span>DE TRADICIÓN</span>
+              </div>
+              <div class="hero-stat-item">
+                <strong>Puro</strong>
+                <span>CARÁCTER</span>
+              </div>
+            </div>
+            <div class="hero-card-footer">
+              <a href="#anatomia" class="card-action-btn">
+                <span>Explorar Anatomía</span>
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+                  <line x1="12" y1="5" x2="12" y2="19"></line>
+                  <polyline points="19 12 12 19 5 12"></polyline>
+                </svg>
+              </a>
+            </div>
+          </article>
+
+        </div>
+
+        <!-- Subtle Scroll Indicator Hint at Bottom -->
+        <div class="hero-scroll-hint">
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+            <line x1="12" y1="5" x2="12" y2="19"></line>
+            <polyline points="19 12 12 19 5 12"></polyline>
+          </svg>
+          <span>Desplaza hacia abajo para explorar</span>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ===================================================================
+         SECTION 02: ANATOMÍA DE LA BOTELLA (Hotspots Interactivos)
+         =================================================================== -->
+    <section class="editorial-section" id="anatomia">
+      <header>
+        <span class="section-eyebrow">02 / NUESTRA BOTELLA</span>
+        <h2 class="section-headline">Anatomía de la Botella Icónica</h2>
+        <p class="section-lead">
+          Cada contorno fue esculpido en 1934 no solo por estética, sino para capturar los aceites esenciales de la cáscara y conservar el gélido perfecto.
+        </p>
+      </header>
+
+      <div class="anatomy-grid">
+        <!-- Visual Display with Pulsating Hotspots -->
+        <div class="anatomy-visual-container">
+          <img src="assets/bottle-render.jpg" alt="Botella Green Spot en relieve" class="bottle-showcase-img" />
+
+          <!-- Hotspot 1: Tapa -->
+          <div class="hotspot-point hp-1 active" data-index="0" title="Tapa Corona Vintage">
+            <div class="hotspot-core"></div>
+          </div>
+
+          <!-- Hotspot 2: Sello Green Spot -->
+          <div class="hotspot-point hp-2" data-index="1" title="El Sello Green Spot">
+            <div class="hotspot-core"></div>
+          </div>
+
+          <!-- Hotspot 3: Vidrio Térmico -->
+          <div class="hotspot-point hp-3" data-index="2" title="Vidrio Esmerilado">
+            <div class="hotspot-core"></div>
+          </div>
+
+          <!-- Hotspot 4: Base -->
+          <div class="hotspot-point hp-4" data-index="3" title="Base de Inercia">
+            <div class="hotspot-core"></div>
+          </div>
+        </div>
+
+        <!-- Hotspot Details Accordion / List -->
+        <div class="anatomy-details-list">
+
+          <div class="anatomy-card active" data-index="0">
+            <div class="anatomy-card-header">
+              <span class="card-num-badge">01</span>
+              <h3 class="anatomy-card-title">Tapa Corona Hermética</h3>
+            </div>
+            <p class="anatomy-card-body">
+              Sellado de acero de presión neumática que encapsula los terpenos cítricos volátiles y previene la oxidación de la vitamina C natural.
+            </p>
+          </div>
+
+          <div class="anatomy-card" data-index="1">
+            <div class="anatomy-card-header">
+              <span class="card-num-badge">02</span>
+              <h3 class="anatomy-card-title">El Emblema "Green Spot"</h3>
+            </div>
+            <p class="anatomy-card-body">
+              El círculo verde esmeralda registrado hace más de 90 años. Símbolo del brote verde de donde florece el azahar y el fruto selecto de California.
+            </p>
+          </div>
+
+          <div class="anatomy-card" data-index="2">
+            <div class="anatomy-card-header">
+              <span class="card-num-badge">03</span>
+              <h3 class="anatomy-card-title">Vidrio Esmerilado de Alta Densidad</h3>
+            </div>
+            <p class="anatomy-card-body">
+              Paredes de cristal de 4.2 mm que retienen la temperatura fría (3°C) durante más de 45 minutos sin transmitir el calor de la mano.
+            </p>
+          </div>
+
+          <div class="anatomy-card" data-index="3">
+            <div class="anatomy-card-header">
+              <span class="card-num-badge">04</span>
+              <h3 class="anatomy-card-title">Base de Decantación Suave</h3>
+            </div>
+            <p class="anatomy-card-body">
+              Fondo cóncavo que permite que las micropartículas de pulpa natural se mantengan en suspensión homogénea con solo girar suavemente la botella.
+            </p>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- ===================================================================
+         SECTION 03: EL SIMULADOR DEL MAESTRO CÍTRICO (Interactive Dashboard)
+         =================================================================== -->
+    <section class="editorial-section" id="simulador">
+      <div class="simulator-wrapper">
+
+        <div class="simulator-header">
+          <span class="section-eyebrow">03 / EL ARTE DEL BALANCE</span>
+          <h2 class="section-headline">El Simulador del Maestro Cítrico</h2>
+          <p class="section-lead" style="margin: 0 auto;">
+            Ajusta la curva térmica de degustación en tiempo real y observa cómo el néctar de Green Spot transforma su estructura, dulzor y bouquet aromático.
+          </p>
+        </div>
+
+        <div class="simulator-dashboard">
+
+          <!-- Dashboard Left: Evolución Sensorial -->
+          <div class="sim-card">
+            <div class="sim-card-title">PERFIL EN TAZA / EVOLUCIÓN SENSORIAL</div>
+
+            <div class="sensor-bars">
+              <div class="sensor-bar-item">
+                <div class="sensor-meta">
+                  <span>Acidez Cítrica</span>
+                  <span class="sensor-val" id="val-acidity">Equilibrada Valencia (68%)</span>
+                </div>
+                <div class="bar-track">
+                  <div class="bar-fill" id="bar-acidity" style="width: 68%;"></div>
+                </div>
+              </div>
+
+              <div class="sensor-bar-item">
+                <div class="sensor-meta">
+                  <span>Dulzor & Caramelización</span>
+                  <span class="sensor-val" id="val-sweetness">Néctar Natural (84%)</span>
+                </div>
+                <div class="bar-track">
+                  <div class="bar-fill" id="bar-sweetness" style="width: 84%;"></div>
+                </div>
+              </div>
+
+              <div class="sensor-bar-item">
+                <div class="sensor-meta">
+                  <span>Cuerpo & Pulpa</span>
+                  <span class="sensor-val" id="val-body">Sedoso con Pulpa (92%)</span>
+                </div>
+                <div class="bar-track">
+                  <div class="bar-fill" id="bar-body" style="width: 92%;"></div>
+                </div>
+              </div>
+
+              <div class="sensor-bar-item">
+                <div class="sensor-meta">
+                  <span>Intensidad Aromática</span>
+                  <span class="sensor-val" id="val-aroma">Azahar Supremo (98%)</span>
+                </div>
+                <div class="bar-track">
+                  <div class="bar-fill" id="bar-aroma" style="width: 98%;"></div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Interactive Tasting Chips -->
+            <div class="tasting-chips-wrap">
+              <div class="tasting-chips-title">NOTAS DE CATA ACTIVAS</div>
+              <div class="tasting-chips">
+                <span class="tasting-chip active">🍊 Naranja Valencia</span>
+                <span class="tasting-chip active">🌸 Flor de Azahar</span>
+                <span class="tasting-chip active">🌿 Aceite de Corteza</span>
+                <span class="tasting-chip">🍯 Miel de Caña</span>
+                <span class="tasting-chip">💧 Agua Volcánica</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Dashboard Center: Dynamic Visual -->
+          <div class="sim-center-visual">
+            <div class="sim-temp-badge">PUNTO ÓPTIMO GOURMET (3°C)</div>
+            <div class="sim-citrus-render">
+              <img id="sim-bottle-img" src="assets/bottle-render.jpg" alt="Botella en degustación" />
+            </div>
+            <span style="font-size: 0.76rem; color: var(--text-muted); margin-top: 14px; text-transform: uppercase; font-family: var(--font-mono);">
+              Materia Prima: Valencia Orange 100% Pura
+            </span>
+          </div>
+
+          <!-- Dashboard Right: Controls & Diagnosis -->
+          <div class="sim-controls-card">
+            <div class="temp-headline">
+              <div>
+                <div style="font-size: 0.75rem; text-transform: uppercase; font-weight: 700; color: var(--text-muted); font-family: var(--font-mono);">
+                  TEMPERATURA DE SERVICIO
+                </div>
+                <div class="temp-value-display" id="temp-display">3.0°C</div>
+              </div>
+              <span class="card-num-badge" style="background: rgba(5, 150, 105, 0.1); color: var(--color-green-spot);">
+                RECOMENDADO
+              </span>
+            </div>
+
+            <div class="temp-slider-wrap">
+              <input
+                type="range"
+                id="temp-slider"
+                class="custom-range-slider"
+                min="0"
+                max="10"
+                step="0.5"
+                value="3"
+              />
+              <div class="slider-milestones">
+                <span>0°C Escarchado</span>
+                <span>3°C Óptimo</span>
+                <span>10°C Ambiente</span>
+              </div>
+            </div>
+
+            <div class="diagnostic-box">
+              <div class="diagnostic-title">DIAGNÓSTICO DEL MAESTRO DE CATA</div>
+              <p class="diagnostic-text" id="diagnostic-text">
+                ¡Punto Óptimo Gourmet (3°C a 4°C)! Liberación perfecta de aceites esenciales de la corteza y carotenoides. El dulzor del sol y la textura de la pulpa alcanzan su clímax.
+              </p>
+            </div>
+          </div>
+
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ===================================================================
+         SECTION 04: GALERÍA DE NICHOS DE MUSEO (Reference Frame 4)
+         =================================================================== -->
+    <section class="niches-museum-section" id="nichos">
+      <div class="niches-museum-header">
+        <span class="section-eyebrow">04 / EDICIONES DE COLECCIÓN</span>
+        <h2 class="section-headline">Nuestra Familia en Relieve</h2>
+        <p class="section-lead">
+          Pasa el cursor sobre cada nicho arquitectónico para encender la iluminación focalizada y descubrir los atributos de cada variedad histórica.
+        </p>
+      </div>
+
+      <div class="niches-wall-grid">
+
+        <!-- Niche 1: Clásica 1934 -->
+        <article class="niche-item active">
+          <div class="niche-spotlight"></div>
+          <div class="niche-lamp-bulb"></div>
+          <img src="assets/bottle-render.jpg" alt="Green Spot Original 1934" class="niche-bottle-graphic" />
+          <div class="niche-label">
+            <h3 class="niche-title">Original 1934</h3>
+            <p class="niche-subtitle">Sin gas • 15% Néctar Real</p>
+          </div>
+        </article>
+
+        <!-- Niche 2: Sparkling Citrus -->
+        <article class="niche-item">
+          <div class="niche-spotlight"></div>
+          <div class="niche-lamp-bulb"></div>
+          <img src="assets/bottle-render.jpg" alt="Green Spot Sparkling" class="niche-bottle-graphic" style="filter: hue-rotate(40deg) drop-shadow(0 15px 25px rgba(0,0,0,0.8));" />
+          <div class="niche-label">
+            <h3 class="niche-title">Sparkling Citrus</h3>
+            <p class="niche-subtitle">Microburbujas de Manantial</p>
+          </div>
+        </article>
+
+        <!-- Niche 3: Ruby Blood Orange -->
+        <article class="niche-item">
+          <div class="niche-spotlight"></div>
+          <div class="niche-lamp-bulb"></div>
+          <img src="assets/bottle-render.jpg" alt="Green Spot Ruby" class="niche-bottle-graphic" style="filter: hue-rotate(330deg) drop-shadow(0 15px 25px rgba(0,0,0,0.8));" />
+          <div class="niche-label">
+            <h3 class="niche-title">Ruby Blood Orange</h3>
+            <p class="niche-subtitle">Naranja Roja & Flor Silvestre</p>
+          </div>
+        </article>
+
+        <!-- Niche 4: Heritage Zero -->
+        <article class="niche-item">
+          <div class="niche-spotlight"></div>
+          <div class="niche-lamp-bulb"></div>
+          <img src="assets/bottle-render.jpg" alt="Green Spot Heritage Zero" class="niche-bottle-graphic" style="filter: saturate(0.4) brightness(1.1) drop-shadow(0 15px 25px rgba(0,0,0,0.8));" />
+          <div class="niche-label">
+            <h3 class="niche-title">Heritage Zero</h3>
+            <p class="niche-subtitle">0 Calorías • Agave Biológico</p>
+          </div>
+        </article>
+
+        <!-- Niche 5: Edición 90 Años -->
+        <article class="niche-item">
+          <div class="niche-spotlight"></div>
+          <div class="niche-lamp-bulb"></div>
+          <img src="assets/bottle-render.jpg" alt="Green Spot Edición Conmemorativa" class="niche-bottle-graphic" style="filter: contrast(1.2) drop-shadow(0 0 20px rgba(255,180,50,0.5));" />
+          <div class="niche-label">
+            <h3 class="niche-title">Reserva 90 Años</h3>
+            <p class="niche-subtitle">Relieve Dorado de Museo</p>
+          </div>
+        </article>
+
+      </div>
+    </section>
+
+    <!-- ===================================================================
+         SECTION 05: TIMELINE HISTÓRICA EDITORIAL
+         =================================================================== -->
+    <section class="timeline-section" id="historia">
+      <header style="margin-bottom: 50px;">
+        <span class="section-eyebrow">05 / CRONOLOGÍA EDITORIAL</span>
+        <h2 class="section-headline">90 Años de Culto</h2>
+        <p class="section-lead">
+          De los repartos de leche matutinos en California al renacimiento en las principales capitales del mundo.
+        </p>
+      </header>
+
+      <div class="timeline-editorial-row">
+        <div class="timeline-year-text">1934</div>
+        <div class="timeline-event-content">
+          <h3>Nacimiento en los Huertos de Claremont</h3>
+          <p>
+            H.M. Jones formula Green Spot como una respuesta saludable y nutritiva para los recolectores de cítricos. Una bebida hecha directamente con pulpa natural sin gas corrosivo.
+          </p>
+        </div>
+      </div>
+
+      <div class="timeline-editorial-row">
+        <div class="timeline-year-text">1952</div>
+        <div class="timeline-event-content">
+          <h3>La Era Dorada de los Diners Americanos</h3>
+          <p>
+            Los lecheros entregan botellas de Green Spot directo en los porches de las familias. Se convierte en la bebida de culto de las fuentes de soda junto con las tartas de manzana y los helados de vainilla.
+          </p>
+        </div>
+      </div>
+
+      <div class="timeline-editorial-row">
+        <div class="timeline-year-text">1980s</div>
+        <div class="timeline-event-content">
+          <h3>La Conquista de América y Asia</h3>
+          <p>
+            La marca trasciende fronteras y se arraiga en Venezuela, Tailandia y Hong Kong, donde varias generaciones crecieron con su inconfundible botella de vidrio grabada.
+          </p>
+        </div>
+      </div>
+
+      <div class="timeline-editorial-row" style="border-bottom: none;">
+        <div class="timeline-year-text">2026</div>
+        <div class="timeline-event-content">
+          <h3>El Renacimiento Editorial & 3D</h3>
+          <p>
+            Un nuevo capítulo donde la tradición artesanal se fusiona con la vanguardia digital, preservando la fórmula inalterable que enamoró al mundo hace casi un siglo.
+          </p>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- ===================================================================
+       EDITORIAL FOOTER
+       =================================================================== -->
+  <footer class="editorial-footer">
+    <div class="footer-top-grid">
+
+      <div>
+        <div class="brand-container" style="margin-bottom: 14px;">
+          <div class="brand-dot"></div>
+          <div class="brand-title" style="color: #fff;">GREEN<span style="color: var(--color-orange-citrus);">SPOT</span></div>
+        </div>
+        <p class="footer-brand-bio">
+          El refresco cítrico que desafió las modas industriales. Creado en los huertos de Claremont, California en 1934 para ofrecer pureza de fruta y frescura sin igual.
+        </p>
+      </div>
+
+      <div class="footer-nav-col">
+        <h4>Navegación</h4>
+        <ul>
+          <li><a href="#origen">El Origen 1934</a></li>
+          <li><a href="#anatomia">Anatomía en Relieve</a></li>
+          <li><a href="#simulador">Simulador Cítrico</a></li>
+          <li><a href="#nichos">Familia de Botellas</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-nav-col">
+        <h4>Comunidad</h4>
+        <ul>
+          <li><a href="#nichos">Edición Coleccionista</a></li>
+          <li><a href="#historia">Archivo Histórico</a></li>
+          <li><a href="#">Guía de Catación</a></li>
+          <li><a href="#">Puntos de Venta</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-nav-col">
+        <h4>Compromiso</h4>
+        <ul>
+          <li><a href="#">Vidrio 100% Circular</a></li>
+          <li><a href="#">Huertos Valencia</a></li>
+          <li><a href="#">Política de Privacidad</a></li>
+          <li><a href="#">Contacto de Prensa</a></li>
+        </ul>
+      </div>
+
+    </div>
+
+    <div class="footer-bottom-bar">
+      <div>© 2026 Green Spot Beverages Co. Todos los derechos reservados.</div>
+      <div style="font-family: var(--font-mono); color: var(--color-orange-amber);">
+        ✦ PUREZA CÍTRICA DESDE 1934 ✦
+      </div>
+    </div>
+  </footer>
+
+  <!-- Scripts -->
+  <script src="js/canvasScrub.js"></script>
+  <script src="js/app.js"></script>
+</body>
+</html>
